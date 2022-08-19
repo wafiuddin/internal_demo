@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import {
+    ReflexContainer,
+    ReflexSplitter,
+    ReflexElement
+  } from 'react-reflex'
 
 class Osh extends Component {
 
@@ -21,16 +26,20 @@ class Osh extends Component {
 
     render(){
         return (
-        <div>
-            <body>
-            <div id="status">
-                Connection failed. Somebody may be using the socket.
-            </div>
-            <div>
-                <canvas id="msg" width="960" height="720"/>
-            </div>
-            </body>
-        </div>
+            <ReflexContainer orientation="vertical">
+            <ReflexElement className="left-pane">
+                <div>
+                    <div id="status">Connection failed. Somebody may be using the socket.</div>
+                    <div><canvas id="msg" width="960" height="720"/></div>
+                </div>
+            </ReflexElement>
+            <ReflexSplitter/>
+            <ReflexElement className="right-pane">
+                <div>
+                     Incompliance
+                </div>
+            </ReflexElement>
+            </ReflexContainer>
         );
     }
   }
