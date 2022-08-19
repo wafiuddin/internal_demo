@@ -28,14 +28,14 @@ class Osh extends Component {
         return (
             <ReflexContainer orientation="vertical">
             <ReflexElement className="left-pane">
-                <div>
+                <div className="pane-content">
                     <div id="status">Connection failed. Somebody may be using the socket.</div>
-                    <div><canvas id="msg" width="960" height="720"/></div>
+                    <canvas id="msg" width="960" height="720"/>
                 </div>
             </ReflexElement>
             <ReflexSplitter/>
             <ReflexElement className="right-pane">
-                <div>
+                <div className="pane-content">
                      Incompliance
                 </div>
             </ReflexElement>
