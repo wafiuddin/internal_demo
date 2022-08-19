@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Osh extends Component {
 
-    openSocket = () => {
+    OnCreate = () => {
         let uri = "ws://" + window.location.hostname + ":8585";
        const socket = new WebSocket(uri);
         let msg = document.getElementById("msg");
@@ -22,7 +22,7 @@ class Osh extends Component {
     render(){
         return (
         <div>
-            <body onload="openSocket()">
+            <body>
             <div id="status">
                 Connection failed. Somebody may be using the socket.
             </div>
