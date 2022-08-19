@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Osh extends Component {
 
-    OnCreate = () => {
+    componentDidMount = () => {
         let uri = "ws://" + window.location.hostname + ":8585";
        const socket = new WebSocket(uri);
         let msg = document.getElementById("msg");
