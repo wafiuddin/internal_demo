@@ -33,8 +33,8 @@ class Osh extends Component {
             </Helmet>
             <ReflexContainer orientation="vertical">
             <ReflexElement className="left-pane">
-                <div className="pane-content">
-                    <div id="status" style={{color:"white"}}>Connection failed. Somebody may be using the socket.</div>
+                <div className="pane-content" style={{color:"white"}}>Livestream
+                    <div id="status" style={{color:"white"}}>Connection failed.</div>
                     <canvas id="msg" width="960" height="720"/>
                 </div>
             </ReflexElement>
