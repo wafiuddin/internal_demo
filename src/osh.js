@@ -1,10 +1,28 @@
 import React, { Component } from 'react'
-import {
-    ReflexContainer,
-    ReflexSplitter,
-    ReflexElement
-  } from 'react-reflex'
-  import { Helmet } from "react-helmet"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
 class Osh extends Component {
     constructor(props) {
@@ -30,25 +48,33 @@ class Osh extends Component {
              });
          });
         return (
-            <div>
-            <Helmet>
-                <style>{'body { background-color: #081217; }'}</style>
-            </Helmet>
-            <ReflexContainer orientation="vertical">
-            <ReflexElement className="left-pane">
-                <div className="pane-content" style={{color:"white"}}>Livestream
-                    <div id="status" style={{color:"white"}}>Connection failed.</div>
-                    <canvas ref={this.canvas} width="960" height="720"/>
-                </div>
-            </ReflexElement>
-            <ReflexSplitter/>
-            <ReflexElement className="right-pane">
-                <div className="pane-content" style={{color:"white"}}>
-                     Incompliance
-                </div>
-            </ReflexElement>
-            </ReflexContainer>
-            </div>
+            <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar variant="dense">
+                {/* <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                </IconButton> */}
+                <Typography variant="h6" color="inherit" component="div">
+                 OSH Demo
+                </Typography>
+                </Toolbar>
+            </AppBar>
+            <br></br>
+            </Box>
+            <Box sx={{ width: '100%', height:'100%'}}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={9}>
+                <Item><canvas ref={this.canvas} width="960" height="720"/></Item>
+                </Grid>
+                <Grid item xs={3}>
+                <Item><Typography variant="h6" color="inherit" component="div">
+                 Incompliance
+                </Typography></Item>
+                </Grid>
+            </Grid>
+            </Box>
+            </ThemeProvider>
         );
     }
   }
