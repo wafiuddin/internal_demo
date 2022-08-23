@@ -63,14 +63,17 @@ class Osh extends Component {
             <br></br>
             </Box>
             <Box sx={{ width: '100%', height:'100%'}}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 1 }}>
                 <Grid item xs={9}>
-                <Item><canvas ref={this.canvas} width="960" height="720"/></Item>
+                    <Item>
+                    <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
+                    <canvas ref={this.canvas} width="960" height="720"/>
+                    </Item>
                 </Grid>
                 <Grid item xs={3}>
-                <Item><Typography variant="h6" color="inherit" component="div">
-                 Incompliance
-                </Typography></Item>
+                    <Item>
+                    <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
+                    </Item>
                 </Grid>
             </Grid>
             </Box>
