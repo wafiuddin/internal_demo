@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Image from './incompliance';
 
 const darkTheme = createTheme({
     palette: {
@@ -73,6 +74,8 @@ class Osh extends Component {
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
+                    <br></br>
+                    <Image></Image>
                     </Item>
                 </Grid>
             </Grid>
