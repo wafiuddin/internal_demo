@@ -65,9 +65,7 @@ class Osh extends Component {
         this.canvas = React.createRef();
      }
 
-    
-
-    render(){
+     componentDidMount() {
         let uri = "ws://" + window.location.hostname + ":8585";
         const socket = new WebSocket(uri);
          socket.addEventListener('open', (e) => {
@@ -81,6 +79,10 @@ class Osh extends Component {
                  ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
              });
          });
+      }
+
+    render(){
+        
         return (
             <ThemeProvider theme={darkTheme}>
             <CssBaseline />
