@@ -9,7 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import Image from './incompliance';
 
 const darkTheme = createTheme({
     palette: {
@@ -24,6 +23,40 @@ const darkTheme = createTheme({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+
+  class Incompliance extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          date: new Date()
+        };
+      }
+    
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        );
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+    
+      tick() {
+        this.setState({
+          date: new Date()
+        });
+      }
+    
+      render() {
+        return (
+          this.state.date.toLocaleTimeString()
+        );
+      }
+    
+  }
 
 class Osh extends Component {
     constructor(props) {
@@ -74,8 +107,7 @@ class Osh extends Component {
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
-                    <br></br>
-                    <Image></Image>
+                    <Incompliance></Incompliance>
                     </Item>
                 </Grid>
             </Grid>
@@ -86,3 +118,4 @@ class Osh extends Component {
   }
   
   export default Osh;
+  
