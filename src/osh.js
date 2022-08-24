@@ -60,7 +60,7 @@ const darkTheme = createTheme({
       constructor(props) {
           super(props);
           this.state = {
-            path: "http://127.0.0.1:9000/pic.jpg"
+            path: "http://localhost:9000/pic.jpg"
           };
         }
       
@@ -78,7 +78,7 @@ const darkTheme = createTheme({
         tick() {
           let cache = new Date().getMilliseconds().toString()
           this.setState({
-            path: "http://127.0.0.1:9000/pic.jpg?"+cache
+            path: "http://localhost:9000/pic.jpg?"+cache
           });
         }
       
