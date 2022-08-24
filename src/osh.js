@@ -25,21 +25,23 @@ const darkTheme = createTheme({
   }));
 
   class Incompliance extends Component{
-    
-      componentDidMount() {
-        this.timerID = setInterval(
-          () => console.log("refresh"),
-          1000
-        );
-      }
-    
-      componentWillUnmount() {
-        clearInterval(this.timerID);
-      }
-    
+  
       render() {
+        let uri = "ws://" + window.location.hostname + ":8585";
+        const socket = new WebSocket(uri);
+         socket.addEventListener('open', (e) => {
+             document.getElementById("status").innerHTML = "Opened";
+         });
+         socket.addEventListener('message', (e) => {
+             let ctx = this.canvas.current.getContext("2d");
+             let image = new Image();
+             image.src = URL.createObjectURL(e.data);
+             image.addEventListener("load", (e) => {
+                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
+             });
+         });
         return (
-          <img src="http://localhost:9000/pic.jpg" width="400"/>
+          <canvas ref={this.canvas} width="400"/>
         );
       }
     
@@ -88,14 +90,12 @@ class Osh extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <br></br>
                     <canvas ref={this.canvas} width="960" height="720"/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
-                    <br></br>
                     <Incompliance></Incompliance>
                     </Item>
                 </Grid>
