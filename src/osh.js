@@ -39,7 +39,7 @@ const darkTheme = createTheme({
     
       render() {
         return (
-          <img src="http://localhost:9000/pic.jpg"/>
+          <img src="http://localhost:9000/pic.jpg" width="400"/>
         );
       }
     
@@ -88,12 +88,14 @@ class Osh extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
+                    <br></br>
                     <canvas ref={this.canvas} width="960" height="720"/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
+                    <br></br>
                     <Incompliance></Incompliance>
                     </Item>
                 </Grid>
