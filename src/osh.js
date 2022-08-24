@@ -84,7 +84,9 @@ const darkTheme = createTheme({
       
         render() {
           return (
-            <img src={this.state.path} width="400" height="200"/>
+            <div width="400" height="200">
+            <img src={this.state.path}/>
+            </div>
           );
         }
     
