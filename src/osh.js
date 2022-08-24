@@ -25,17 +25,10 @@ const darkTheme = createTheme({
   }));
 
   class Incompliance extends Component{
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          date: new Date()
-        };
-      }
     
       componentDidMount() {
         this.timerID = setInterval(
-          () => this.tick(),
+          () => console.log("refresh"),
           1000
         );
       }
@@ -44,15 +37,9 @@ const darkTheme = createTheme({
         clearInterval(this.timerID);
       }
     
-      tick() {
-        this.setState({
-          date: new Date()
-        });
-      }
-    
       render() {
         return (
-          this.state.date.toLocaleTimeString()
+          <img src="http://localhost:9000/pic.jpg"/>
         );
       }
     
