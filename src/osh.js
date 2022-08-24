@@ -25,56 +25,68 @@ const darkTheme = createTheme({
   }));
 
   class Time extends Component{
-    constructor(props) {
-      super(props);
-      this.state = {
-        date: new Date()
-      };
-    }
-  
-    componentDidMount() {
-      this.timerID = setInterval(
-        () => this.tick(),
-        60000
-      );
-    }
-  
-    componentWillUnmount() {
-      clearInterval(this.timerID);
-    }
-  
-    tick() {
-      this.setState({
-        date: new Date()
-      });
-    }
-  
-    render() {
-      return (
-        this.state.date.toLocaleTimeString()
-      );
-    }
+        constructor(props) {
+          super(props);
+          this.state = {
+            date: new Date()
+          };
+        }
+      
+        componentDidMount() {
+          this.timerID = setInterval(
+            () => this.tick(),
+            6000
+          );
+        }
+      
+        componentWillUnmount() {
+          clearInterval(this.timerID);
+        }
+      
+        tick() {
+          this.setState({
+            date: new Date()
+          });
+        }
+      
+        render() {
+          return (
+            this.state.date.toLocaleTimeString()
+          );
+        }
   }
   class Incompliance extends Component{
-  
-      render() {
-        let url = "ws://" + window.location.hostname + ":9595";
-        const socket = new WebSocket(url);
-         socket.addEventListener('open', (e) => {
-             document.getElementById("status").innerHTML = "Opened";
-         });
-         socket.addEventListener('message', (e) => {
-             let ctx = this.canvas.current.getContext("2d");
-             let image = new Image();
-             image.src = URL.createObjectURL(e.data);
-             image.addEventListener("load", (e) => {
-                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
-             });
-         });
-        return (
-          <canvas ref={this.canvas} width="400"/>
-        );
-      }
+
+      constructor(props) {
+          super(props);
+          this.state = {
+            path: "http://127.0.0.1:9000/pic.jpg"
+          };
+        }
+      
+        componentDidMount() {
+          this.timerID = setInterval(
+            () => this.tick(),
+            6000
+          );
+        }
+      
+        componentWillUnmount() {
+          clearInterval(this.timerID);
+        }
+      
+        tick() {
+          let cache = new Date().getMilliseconds().toString()
+          this.setState({
+            path: "http://127.0.0.1:9000/pic.jpg?"+cache
+          });
+        }
+      
+        render() {
+          return (
+            <img src={this.state.path}/>
+          );
+        }
     
   }
 
