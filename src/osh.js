@@ -67,7 +67,7 @@ const darkTheme = createTheme({
         componentDidMount() {
           this.timerID = setInterval(
             () => this.tick(),
-            6000
+            1000
           );
         }
       
