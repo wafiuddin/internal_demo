@@ -24,11 +24,42 @@ const darkTheme = createTheme({
     color: theme.palette.text.secondary,
   }));
 
+  class Time extends Component{
+    constructor(props) {
+      super(props);
+      this.state = {
+        date: new Date()
+      };
+    }
+  
+    componentDidMount() {
+      this.timerID = setInterval(
+        () => this.tick(),
+        60000
+      );
+    }
+  
+    componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  
+    tick() {
+      this.setState({
+        date: new Date()
+      });
+    }
+  
+    render() {
+      return (
+        this.state.date.toLocaleTimeString()
+      );
+    }
+  }
   class Incompliance extends Component{
   
       render() {
-        let uri = "ws://" + window.location.hostname + ":8585";
-        const socket = new WebSocket(uri);
+        let url = "ws://" + window.location.hostname + ":9595";
+        const socket = new WebSocket(url);
          socket.addEventListener('open', (e) => {
              document.getElementById("status").innerHTML = "Opened";
          });
@@ -57,8 +88,8 @@ class Osh extends Component {
     
 
     render(){
-        let uri = "ws://" + window.location.hostname + ":8585";
-        const socket = new WebSocket(uri);
+        let url = "ws://" + window.location.hostname + ":8585";
+        const socket = new WebSocket(url);
          socket.addEventListener('open', (e) => {
              document.getElementById("status").innerHTML = "Opened";
          });
@@ -99,6 +130,9 @@ class Osh extends Component {
                     <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
                     <br></br>
                     <Incompliance></Incompliance>
+                    <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
+                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
+                    <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
                     </Item>
                 </Grid>
             </Grid>
