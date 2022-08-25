@@ -134,7 +134,7 @@ class Osh extends Component {
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
                     <br></br>
-                    <canvas ref={this.canvas} width="960" height="720"/>
+                    <canvas ref={this.canvas} width="1000" height="720"/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
