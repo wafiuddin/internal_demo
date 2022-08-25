@@ -90,7 +90,7 @@ const darkTheme = createTheme({
     
   }
 
-class Osh extends Component {
+class ObjectDetection extends Component {
     constructor(props) {
         super(props);
      
@@ -152,5 +152,5 @@ class Osh extends Component {
     }
   }
   
-  export default Osh;
+  export default ObjectDetection;
   
