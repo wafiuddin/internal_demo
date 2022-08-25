@@ -84,9 +84,7 @@ const darkTheme = createTheme({
       
         render() {
           return (
-            <div width="400" height="200">
-            <img src={this.state.path}/>
-            </div>
+            <img src={this.state.path} width="100%" height="100%"/>
           );
         }
     
@@ -141,9 +139,9 @@ class Osh extends Component {
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
-                    <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
+                    <Typography variant="h6" color="inherit" component="div">Noncompliance</Typography>
                     <br></br>
-                    <Incompliance></Incompliance>
+                    <Incompliance ></Incompliance>
                     <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
                     <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
                     <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
