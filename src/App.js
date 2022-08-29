@@ -1,5 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+
+function osh (){
+  window.location="/osh"
+  }
+
+function objectDemo (){
+    window.location="/objectdetection"
+    }
 
 function App() {
   return (
@@ -7,16 +17,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Demo Catalogue
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ButtonGroup variant="contained" aria-label="outlined primary button group">
+      <Button onClick={(event)=>osh(event)}>OSH Demo</Button>
+      <Button onClick={(event)=>objectDemo(event)}>Object Detection Demo</Button>
+    </ButtonGroup>
       </header>
     </div>
   );

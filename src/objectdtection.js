@@ -5,9 +5,9 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 
 const darkTheme = createTheme({
@@ -97,7 +97,9 @@ class ObjectDetection extends Component {
         this.canvas = React.createRef();
      }
 
-    
+     returnHome = ()=>{
+      window.location='/'
+    }
 
     render(){
         let url = "ws://" + window.location.hostname + ":8585";
@@ -119,10 +121,10 @@ class ObjectDetection extends Component {
             <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                {/* <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                </IconButton> */}
+                <HomeIcon style={{cursor:"pointer"}} color="inherit" aria-label="home" size= "large" sx={{ mr: 3 }} onClick={this.returnHome}>
+                </HomeIcon>
                 <Typography variant="h6" color="inherit" component="div">
-                 OSH Demo
+                 Object Detection Demo
                 </Typography>
                 </Toolbar>
             </AppBar>
@@ -133,7 +135,7 @@ class ObjectDetection extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="960" height="720"/>
+                    <canvas ref={this.canvas} width="960" height="820" style={{objectFit:"contain"}}/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
