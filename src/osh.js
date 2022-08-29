@@ -110,7 +110,7 @@ class Osh extends Component {
              let image = new Image();
              image.src = URL.createObjectURL(e.data);
              image.addEventListener("load", (e) => {
-                 ctx.drawImage(image, 0, 0, image.width.toLocaleString, image.height.toLocaleString);
+                 ctx.drawImage(image, 0, 0);
              });
          });
         return (
