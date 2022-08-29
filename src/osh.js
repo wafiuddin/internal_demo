@@ -110,7 +110,7 @@ class Osh extends Component {
              let image = new Image();
              image.src = URL.createObjectURL(e.data);
              image.addEventListener("load", (e) => {
-                 ctx.drawImage(image, 0, 0);
+                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
              });
          });
         return (
@@ -133,7 +133,7 @@ class Osh extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="auto" height="auto"/>
+                    <canvas ref={this.canvas} width="100%" height="auto"/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
@@ -141,7 +141,7 @@ class Osh extends Component {
                     <Typography variant="h6" color="inherit" component="div">Non-compliance</Typography>
                     <Incompliance ></Incompliance>
                     <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Date: 29 August 2022</Typography>
+                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
                     <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
                     </Item>
                 </Grid>
