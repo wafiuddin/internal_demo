@@ -141,7 +141,7 @@ class Osh extends Component {
                     <Typography variant="h6" color="inherit" component="div">Non-compliance</Typography>
                     <Incompliance ></Incompliance>
                     <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
+                    <Typography variant="h8" color="inherit" component="div">Date: 29 August 2022</Typography>
                     <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
                     </Item>
                 </Grid>
