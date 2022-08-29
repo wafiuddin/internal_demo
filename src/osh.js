@@ -131,10 +131,8 @@ class Osh extends Component {
             <Box sx={{ width: '100%', height:'100%'}}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 12, sm: 2, md: 1 }}>
                 <Grid item xs={9}>
-                    <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="100%" height="auto"/>
-                    </Item>
+                    <canvas ref={this.canvas} width="auto" height="auto"/>
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
