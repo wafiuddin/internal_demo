@@ -110,7 +110,7 @@ class Osh extends Component {
              let image = new Image();
              image.src = URL.createObjectURL(e.data);
              image.addEventListener("load", (e) => {
-                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
+                 ctx.drawImage(image, 0, 0, 960, 720);
              });
          });
         return (
@@ -131,8 +131,10 @@ class Osh extends Component {
             <Box sx={{ width: '100%', height:'100%'}}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 12, sm: 2, md: 1 }}>
                 <Grid item xs={9}>
+                    <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="auto" height="auto"/>
+                    <canvas ref={this.canvas} width="960" height="720"/>
+                    </Item>
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
