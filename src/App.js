@@ -11,6 +11,10 @@ function objectDemo (){
     window.location="/objectdetection"
     }
 
+function face (){
+  window.location="/face"
+}
+
 function App() {
   return (
     <div className="App">
@@ -20,8 +24,9 @@ function App() {
           Demo Catalogue
         </p>
         <ButtonGroup variant="contained" aria-label="outlined primary button group">
-      <Button onClick={(event)=>osh(event)}>OSH Demo</Button>
-      <Button onClick={(event)=>objectDemo(event)}>Object Detection Demo</Button>
+      <Button onClick={(event)=>osh(event)}>OSH</Button>
+      <Button onClick={(event)=>objectDemo(event)}>Object Detection</Button>
+      <Button onClick={(event)=>face(event)}>Face Recognition</Button>
     </ButtonGroup>
       </header>
     </div>
