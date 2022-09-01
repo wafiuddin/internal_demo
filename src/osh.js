@@ -104,9 +104,6 @@ class Osh extends Component {
     render(){
         let url = "ws://" + window.location.hostname + ":8585";
         const socket = new WebSocket(url);
-         socket.addEventListener('open', (e) => {
-             document.getElementById("status").innerHTML = "Opened";
-         });
          socket.addEventListener('message', (e) => {
              let ctx = this.canvas.current.getContext("2d");
              let image = new Image();
@@ -124,7 +121,7 @@ class Osh extends Component {
                 <HomeIcon style={{cursor:"pointer"}} color="inherit" aria-label="home" size= "large" sx={{ mr: 3 }} onClick={this.returnHome}>
                 </HomeIcon>
                 <Typography variant="h6" color="inherit" component="div">
-                 OSH Demo
+                 Aerodyne AI
                 </Typography>
                 </Toolbar>
             </AppBar>

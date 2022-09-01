@@ -124,7 +124,7 @@ class Face extends Component {
                 <HomeIcon style={{cursor:"pointer"}} color="inherit" aria-label="home" size= "large" sx={{ mr: 3 }} onClick={this.returnHome}>
                 </HomeIcon>
                 <Typography variant="h6" color="inherit" component="div">
-                 Face Recognition Demo
+                 Aerodyne AI
                 </Typography>
                 </Toolbar>
             </AppBar>
