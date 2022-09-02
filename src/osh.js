@@ -67,7 +67,7 @@ const darkTheme = createTheme({
         componentDidMount() {
           this.timerID = setInterval(
             () => this.tick(),
-            1
+            1000
           );
         }
       
@@ -76,9 +76,8 @@ const darkTheme = createTheme({
         }
       
         tick() {
-          let cache = new Date().getMilliseconds().toString()
           this.setState({
-            path: "http://localhost:9000/pic.jpg?"+cache
+            path: "http://localhost:9000/pic.jpg?"+Math.random()
           });
         }
       
