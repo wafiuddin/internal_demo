@@ -67,7 +67,7 @@ const darkTheme = createTheme({
         componentDidMount() {
           this.timerID = setInterval(
             () => this.tick(),
-            1000
+            1
           );
         }
       
@@ -84,7 +84,7 @@ const darkTheme = createTheme({
       
         render() {
           return (
-            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}}/>
+            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Non-compliance"/>
           );
         }
     
