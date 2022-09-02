@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
+import { ImageList, ImageListItem } from '@mui/material';
 
 const darkTheme = createTheme({
     palette: {
@@ -23,72 +24,73 @@ const darkTheme = createTheme({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-
-  class Time extends Component{
-        constructor(props) {
-          super(props);
-          this.state = {
-            date: new Date()
-          };
-        }
-      
-        componentDidMount() {
-          this.timerID = setInterval(
-            () => this.tick(),
-            6000
-          );
-        }
-      
-        componentWillUnmount() {
-          clearInterval(this.timerID);
-        }
-      
-        tick() {
-          this.setState({
-            date: new Date()
-          });
-        }
-      
-        render() {
-          return (
-            this.state.date.toLocaleTimeString()
-          );
-        }
-  }
-  class Incompliance extends Component{
-
+  class Information extends Component{
       constructor(props) {
           super(props);
           this.state = {
             path: "http://localhost:9000/pic.jpg"
           };
         }
-      
         componentDidMount() {
           this.timerID = setInterval(
             () => this.tick(),
             1000
           );
         }
-      
         componentWillUnmount() {
           clearInterval(this.timerID);
         }
-      
         tick() {
-          let cache = new Date().getMilliseconds().toString()
           this.setState({
-            path: "http://localhost:9000/pic.jpg?"+cache
+            path: "http://localhost:9000/pic.jpg?"+Math.random()
           });
         }
-      
         render() {
           return (
-            <img src={this.state.path} width="100%" height="100%"/>
+            <div>
+            <img src={this.state.path} width="100%" height="400" style={{objectFit:"contain"}} alt="Non-compliance"/>
+            <Typography variant="h8" color="inherit" component="div">Name : ----</Typography>
+            <Typography variant="h8" color="inherit" component="div">Position: ----</Typography>
+            <Typography variant="h8" color="inherit" component="div">Time: ----</Typography>
+            </div>
           );
         }
-    
   }
+
+  function Gallery(){return (
+    <ImageList sx={{ width: "100%", height: 300 }} cols={2} rowHeight={164}>
+      {itemData.map((item) => (
+        <ImageListItem key={item.img}>
+          <img
+            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.title}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
+}
+
+const itemData = [
+  {
+    img: 'http://localhost:9000/pic.jpg',
+    title: 'test1',
+    },
+    {
+      img: 'http://localhost:9000/pic.jpg',
+      title: 'test1',
+      },
+      {
+        img: 'http://localhost:9000/pic.jpg',
+        title: 'test1',
+        },
+        {
+          img: 'http://localhost:9000/pic.jpg',
+          title: 'test1',
+          },
+];
 
 class Face extends Component {
     constructor(props) {
@@ -97,16 +99,13 @@ class Face extends Component {
         this.canvas = React.createRef();
      }
 
-     returnHome = ()=>{
+    returnHome = ()=>{
       window.location='/'
     }
 
     render(){
         let url = "ws://" + window.location.hostname + ":8585";
         const socket = new WebSocket(url);
-         socket.addEventListener('open', (e) => {
-             document.getElementById("status").innerHTML = "Opened";
-         });
          socket.addEventListener('message', (e) => {
              let ctx = this.canvas.current.getContext("2d");
              let image = new Image();
@@ -141,10 +140,8 @@ class Face extends Component {
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Information</Typography>
-                    <Incompliance ></Incompliance>
-                    <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
+                    <Information ></Information>
+                    <Gallery></Gallery>
                     </Item>
                 </Grid>
             </Grid>
