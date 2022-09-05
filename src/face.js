@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 import { ImageList, ImageListItem } from '@mui/material';
+import Papa from "papaparse";
 
 const darkTheme = createTheme({
     palette: {
@@ -74,22 +75,6 @@ const darkTheme = createTheme({
 }
 
 const itemData = [
-  {
-    img: 'http://localhost:9000/pic.jpg',
-    title: 'test1',
-    },
-    {
-      img: 'http://localhost:9000/pic.jpg',
-      title: 'test1',
-      },
-      {
-        img: 'http://localhost:9000/pic.jpg',
-        title: 'test1',
-        },
-        {
-          img: 'http://localhost:9000/pic.jpg',
-          title: 'test1',
-          },
 ];
 
 class Face extends Component {
@@ -103,7 +88,16 @@ class Face extends Component {
       window.location='/'
     }
 
+
     render(){
+      let data
+      Papa.parse('http://localhost:9000/testcsv.csv', {
+        header: true,
+        complete: function(results) {
+          console.log(results);
+          data = results.data;
+        }
+      });
         let url = "ws://" + window.location.hostname + ":8585";
         const socket = new WebSocket(url);
          socket.addEventListener('message', (e) => {

@@ -83,7 +83,7 @@ const darkTheme = createTheme({
       
         render() {
           return (
-            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Non-compliance"/>
+            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Non-compliance" content='no-cache'/>
           );
         }
     
