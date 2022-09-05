@@ -76,15 +76,14 @@ const darkTheme = createTheme({
         }
       
         tick() {
-          let cache = new Date().getMilliseconds().toString()
           this.setState({
-            path: "http://localhost:9000/pic.jpg?"+cache
+            path: "http://localhost:9000/pic.jpg?"+Math.random().toExponential()
           });
         }
       
         render() {
           return (
-            <img src={this.state.path} width="100%" height="100%" content='no-cache'/>
+            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Face" content='no-cache'/>
           );
         }
     

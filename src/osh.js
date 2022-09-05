@@ -77,7 +77,7 @@ const darkTheme = createTheme({
       
         tick() {
           this.setState({
-            path: "http://localhost:9000/pic.jpg?"+Math.random()
+            path: "http://localhost:9000/pic.jpg?"+Math.random().toExponential()
           });
         }
       
