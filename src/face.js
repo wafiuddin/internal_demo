@@ -42,6 +42,7 @@ const darkTheme = createTheme({
           let url = "ws://" + window.location.hostname + ":8686";
         const socket = new WebSocket(url);
          socket.addEventListener('message', (e) => {
+          console.log(e.data)
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
           this.setState({ name: path.name});
