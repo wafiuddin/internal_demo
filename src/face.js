@@ -45,9 +45,10 @@ const darkTheme = createTheme({
           console.log(e.data)
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
+          document.getElementById("image").src=this.state.path;
           this.setState({ name: path.name});
           this.setState({ designation: path.designation});
-          document.getElementById("image").src=this.state.path;
+          
 
          });
           return (
