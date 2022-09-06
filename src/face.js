@@ -56,10 +56,16 @@ const darkTheme = createTheme({
         }
   }
   class Incompliance extends Component{
-          state = {
+
+        constructor(props) {
+          super(props);
+          this.state = {
             path: ""
           };
+          this.canvas = React.createRef();
+      }
 
+          
       
         render() {
           let url = "ws://" + window.location.hostname + ":8686";
@@ -69,12 +75,18 @@ const darkTheme = createTheme({
          });
          socket.addEventListener('message', (e) => {
           let path = JSON.parse(e.data)
-          this.setState({ path: "http://localhost:9000/?"+path.name });
+          this.setState({ path: "http://localhost:9000/?"+path.ID });
+          let ctx = this.canvas.current.getContext("2d");
+             let image = new Image();
+             image.src = URL.createObjectURL(this.state.path);
+             image.addEventListener("load", (e) => {
+                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
+             });
+          
          });
-         console.log(this.state.path);
           return (
             <div>
-            <img src={"http://localhost:9000/?"+this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Face" content='no-cache'/>
+            <canvas ref={this.canvas} width="400" height="600" style={{objectFit:"contain"}}/>
             <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
             <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
             <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
