@@ -41,9 +41,6 @@ const darkTheme = createTheme({
         render() {
           let url = "ws://" + window.location.hostname + ":8686";
         const socket = new WebSocket(url);
-         socket.addEventListener('open', (e) => {
-             document.getElementById("status").innerHTML = "Opened";
-         });
          socket.addEventListener('message', (e) => {
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
@@ -78,9 +75,6 @@ class Face extends Component {
     render(){
         let url = "ws://" + window.location.hostname + ":8585";
         const socket = new WebSocket(url);
-         socket.addEventListener('open', (e) => {
-             document.getElementById("status").innerHTML = "Opened";
-         });
          socket.addEventListener('message', (e) => {
              let ctx = this.canvas.current.getContext("2d");
              let image = new Image();
