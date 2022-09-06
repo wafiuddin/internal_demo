@@ -56,34 +56,28 @@ const darkTheme = createTheme({
         }
   }
   class Incompliance extends Component{
-
-      constructor(props) {
-          super(props);
-          this.state = {
-            path: "http://localhost:9000/pic.jpg"
+          state = {
+            path: ""
           };
-        }
-      
-        componentDidMount() {
-          this.timerID = setInterval(
-            () => this.tick(),
-            1000
-          );
-        }
-      
-        componentWillUnmount() {
-          clearInterval(this.timerID);
-        }
-      
-        tick() {
-          this.setState({
-            path: "http://localhost:9000/pic.jpg?"+Math.random().toExponential()
-          });
-        }
+
       
         render() {
+          let url = "ws://" + window.location.hostname + ":8686";
+        const socket = new WebSocket(url);
+         socket.addEventListener('open', (e) => {
+             document.getElementById("status").innerHTML = "Opened";
+         });
+         socket.addEventListener('message', (e) => {
+          this.setState({ path: "http://localhost:9000/?"+e.data });
+         });
+         console.log(this.state.path);
           return (
-            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Face" content='no-cache'/>
+            <div>
+            <img src={"http://localhost:9000/?"+this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Face" content='no-cache'/>
+            <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
+            <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
+            <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
+            </div>
           );
         }
     
@@ -141,9 +135,6 @@ class Face extends Component {
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Information</Typography>
                     <Incompliance ></Incompliance>
-                    <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
                     </Item>
                 </Grid>
             </Grid>

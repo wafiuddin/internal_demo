@@ -83,7 +83,12 @@ const darkTheme = createTheme({
       
         render() {
           return (
+            <div>
             <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Non-compliance" content='no-cache'/>
+            <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
+            <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
+            <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
+            </div>
           );
         }
     
@@ -138,9 +143,6 @@ class Osh extends Component {
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Non-compliance</Typography>
                     <Incompliance ></Incompliance>
-                    <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
-                    <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
                     </Item>
                 </Grid>
             </Grid>
