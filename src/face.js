@@ -68,7 +68,8 @@ const darkTheme = createTheme({
              document.getElementById("status").innerHTML = "Opened";
          });
          socket.addEventListener('message', (e) => {
-          this.setState({ path: "http://localhost:9000/?"+e.data });
+          let path = JSON.parse(e.data)
+          this.setState({ path: "http://localhost:9000/?"+path.name });
          });
          console.log(this.state.path);
           return (
