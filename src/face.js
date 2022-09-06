@@ -78,17 +78,17 @@ const darkTheme = createTheme({
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
           this.setState({ name: path.name});
-          let ctx = this.canvas.current.getContext("2d");
-             let image = new Image();
-             image.src =this.state.path;
-             image.addEventListener("load", (e) => {
-                 ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
-             });
-          console.log(this.state);
+          // let ctx = this.canvas.current.getContext("2d");
+          //    let image = new Image();
+          //    image.src =this.state.path;
+          //    image.addEventListener("load", (e) => {
+          //        ctx.drawImage(image, 0, 0, this.canvas.current.width, this.canvas.current.height);
+          //    });
+          // console.log(this.state);
          });
           return (
             <div>
-            <canvas ref={this.canvas} width="400" height="600" style={{objectFit:"contain"}}/>
+            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
             <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
