@@ -76,7 +76,7 @@ const darkTheme = createTheme({
          });
          socket.addEventListener('message', (e) => {
           let path = JSON.parse(e.data)
-          this.setState({ path: "http://localhost:9000/?"+path.ID });
+          this.setState({ path: "http://localhost:9000/"+path.ID });
           this.setState({ name: path.name});
           let ctx = this.canvas.current.getContext("2d");
              let image = new Image();
