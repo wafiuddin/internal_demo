@@ -45,7 +45,7 @@ const darkTheme = createTheme({
           console.log(e.data)
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
-          document.getElementById("image").src=this.state.path;
+          // document.getElementById("image").src=this.state.path;
           this.setState({ name: path.name});
           this.setState({ designation: path.designation});
           
@@ -53,7 +53,7 @@ const darkTheme = createTheme({
          });
           return (
             <div>
-            <img id="image" width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
+            <img id="image" src= {this.state.path} width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time:</Typography>
