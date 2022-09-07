@@ -34,7 +34,8 @@ const darkTheme = createTheme({
             itemData: [],
             path: "",
             name: "",
-            designation:""
+            designation:"",
+            time_taken:""
           };
           this.canvas = React.createRef();
       }
@@ -46,13 +47,14 @@ const darkTheme = createTheme({
         const socket = new WebSocket(url);
          socket.addEventListener('message', (e) => {
           console.log(e.data)
-          let path = JSON.parse(e.data)
-          this.setState({ path: "http://localhost:9000/"+path.ID });
-          if (!this.state.itemData.includes(this.state.path)) {
-              this.state.itemData.push(this.state.path)
+          let json = JSON.parse(e.data)
+          this.setState({ path: "http://localhost:9000/"+json.ID });
+          if (!this.state.itemData.includes(this.state.json.ID)) {
+              this.state.itemData.push(this.state.json.ID)
           }
-          this.setState({ name: path.name});
-          this.setState({ designation: path.designation});
+          this.setState({ name: json.name});
+          this.setState({ designation: json.designation});
+          this.setState({ time_taken: json.time_taken})
           
 
          });
@@ -62,7 +64,7 @@ const darkTheme = createTheme({
             <img id="image" src= {this.state.path} width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
-            <Typography variant="h8" color="inherit" component="div">Time:</Typography>
+            <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             </div>
             <div>
               <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={164}>
