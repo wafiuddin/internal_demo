@@ -32,6 +32,7 @@ const darkTheme = createTheme({
           super(props);
           this.state = {
             itemData: [],
+            whitelist: [],
             path: "",
             name: "",
             designation:"",
@@ -49,12 +50,16 @@ const darkTheme = createTheme({
           console.log(e.data)
           let json = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+json.ID });
-          if (!this.state.itemData.includes(this.state.path)) {
-              this.state.itemData.push(this.state.path)
-          }
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
-          this.setState({ time_taken: json.time_taken})
+          this.setState({ time_taken: json.time_taken});
+          if (!this.state.whitelist.includes(this.state.name)){
+            this.state.whitelist.push(this.state.name)
+            if (!this.state.itemData.includes(this.state.path)) {
+              this.state.itemData.push(this.state.path)
+          }
+          }
+
           
 
          });
