@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 const darkTheme = createTheme({
     palette: {
@@ -29,6 +31,7 @@ const darkTheme = createTheme({
         constructor(props) {
           super(props);
           this.state = {
+            itemData: [],
             path: "",
             name: "",
             designation:""
@@ -45,7 +48,9 @@ const darkTheme = createTheme({
           console.log(e.data)
           let path = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+path.ID });
-          // document.getElementById("image").src=this.state.path;
+          if (!this.state.itemData.includes(this.state.path)) {
+              this.state.itemData.push(this.state.path)
+          }
           this.setState({ name: path.name});
           this.setState({ designation: path.designation});
           
@@ -53,10 +58,26 @@ const darkTheme = createTheme({
          });
           return (
             <div>
+            <div>
             <img id="image" src= {this.state.path} width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time:</Typography>
+            </div>
+            <div>
+              <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={164}>
+                {this.state.itemData.map((item) => (
+                    <ImageListItem key={item}>
+                      <img
+                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item}
+                        loading="lazy"
+                      />
+                    </ImageListItem>
+                ))}
+              </ImageList>
+            </div>
             </div>
           );
         }
