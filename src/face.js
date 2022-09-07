@@ -61,13 +61,13 @@ const darkTheme = createTheme({
           return (
             <div>
             <div>
-            <img id="image" src= {this.state.path} width="400" height="600" style={{objectFit:"contain"}} content='no-cache'/>
+            <img id="image" src= {this.state.path} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             </div>
             <div>
-              <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={164}>
+              <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={100}>
                 {this.state.itemData.map((item) => (
                     <ImageListItem key={item}>
                       <img
