@@ -49,7 +49,7 @@ const darkTheme = createTheme({
          socket.addEventListener('message', (e) => {
           console.log(e.data)
           let json = JSON.parse(e.data)
-          this.setState({ path: "http://localhost:9000/"+json.ID +Math.random()});
+          this.setState({ path: "http://localhost:9000/"+json.ID +"?"+Math.random().toExponential});
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
           this.setState({ time_taken: json.time_taken});
