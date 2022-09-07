@@ -49,8 +49,8 @@ const darkTheme = createTheme({
           console.log(e.data)
           let json = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+json.ID });
-          if (!this.state.itemData.includes(this.state.json.ID)) {
-              this.state.itemData.push(this.state.json.ID)
+          if (!this.state.itemData.includes(this.state.path)) {
+              this.state.itemData.push(this.state.path)
           }
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
