@@ -55,7 +55,6 @@ const darkTheme = createTheme({
           this.setState({ status: json.status});
           this.setState({ hat: json.hat});
           this.setState({boot:json.boot});
-x
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
               this.state.itemData.push(this.state.path)
