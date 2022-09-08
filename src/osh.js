@@ -52,7 +52,7 @@ const darkTheme = createTheme({
           this.setState({ path: "http://localhost:9000/"+json.ID+"?"+Math.random().toExponential()});
           this.setState({ status: json.status});
           this.setState({ hat: json.hat});
-          this.setState({ boot: json.boot});
+
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
               this.state.itemData.push(this.state.path)
@@ -138,7 +138,7 @@ class Osh extends Component {
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
-                    <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
+                    <Typography variant="h6" color="inherit" component="div">Non-Compliance</Typography>
                     <Incompliance ></Incompliance>
                     </Item>
                 </Grid>
