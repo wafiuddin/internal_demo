@@ -36,7 +36,7 @@ const darkTheme = createTheme({
             //make sure people dont repeat in list
             whitelist: [],
             //occurance
-            
+            occurance : 0,
 
             path: "",
             name: "",
@@ -77,7 +77,7 @@ const darkTheme = createTheme({
           if (!this.state.whitelist.includes(this.state.name)){
             this.state.whitelist.push(this.state.name)
             if (!this.state.itemData.includes(this.state.path)) {
-              this.state.itemData.push(this.state.path)
+              this.state.itemData.push({id:this.state.path, occurance:this.state.occurance+1})
           }
           }
 
@@ -97,13 +97,13 @@ const darkTheme = createTheme({
                 {this.state.itemData.map((item) => (
                     <ImageListItem key={item}>
                       <img
-                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item.id}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item.id}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                         alt={item}
                         loading="lazy"
                       />
                       <ImageListItemBar
-                        title={"Occurance : "}>
+                        title={"Occurance : " +this.state.occurance}>
                         </ImageListItemBar>
                     </ImageListItem>
                     
