@@ -11,7 +11,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 const darkTheme = createTheme({
     palette: {
@@ -35,9 +34,6 @@ const darkTheme = createTheme({
             itemData: [],
             //make sure people dont repeat in list
             whitelist: [],
-            //occurance
-            occurance : 0,
-
             path: "",
             name: "",
             designation:"",
@@ -46,23 +42,7 @@ const darkTheme = createTheme({
           this.canvas = React.createRef();
       }
 
-      componentDidMount() {
-        this.timerID = setInterval(
-          () => this.tick(),
-          5000
-        );
-      }
-
-      componentWillUnmount() {
-        clearInterval(this.timerID);
-      }
-
-      tick() {
-        
-        this.setState({
-          whitelist: []
-        });
-      }
+          
       
         render() {
           let url = "ws://" + window.location.hostname + ":8686";
@@ -77,7 +57,7 @@ const darkTheme = createTheme({
           if (!this.state.whitelist.includes(this.state.name)){
             this.state.whitelist.push(this.state.name)
             if (!this.state.itemData.includes(this.state.path)) {
-              this.state.itemData.push({id:this.state.path, occurance:this.state.occurance+1})
+              this.state.itemData.push(this.state.path)
           }
           }
 
@@ -97,17 +77,12 @@ const darkTheme = createTheme({
                 {this.state.itemData.map((item) => (
                     <ImageListItem key={item}>
                       <img
-                        src={`${item.id}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item.id}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                         alt={item}
                         loading="lazy"
                       />
-                      <ImageListItemBar
-                        subtitle={"Occurance : " +this.state.occurance}
-                        position="below">
-                        </ImageListItemBar>
                     </ImageListItem>
-                    
                 ))}
               </ImageList>
             </div>
