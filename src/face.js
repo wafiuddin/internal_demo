@@ -73,6 +73,7 @@ const darkTheme = createTheme({
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
+            <Typography variant="h8" color="inherit" component="div">Location: Cyberjaya</Typography>
             </div>
             <div>
               <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={100}>
