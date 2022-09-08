@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 const darkTheme = createTheme({
     palette: {
@@ -32,7 +33,11 @@ const darkTheme = createTheme({
           super(props);
           this.state = {
             itemData: [],
+            //make sure people dont repeat in list
             whitelist: [],
+            //occurance
+            
+
             path: "",
             name: "",
             designation:"",
@@ -41,7 +46,23 @@ const darkTheme = createTheme({
           this.canvas = React.createRef();
       }
 
-          
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          5000
+        );
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+
+      tick() {
+        
+        this.setState({
+          whitelist: []
+        });
+      }
       
         render() {
           let url = "ws://" + window.location.hostname + ":8686";
@@ -81,7 +102,11 @@ const darkTheme = createTheme({
                         alt={item}
                         loading="lazy"
                       />
+                      <ImageListItemBar
+                        title={"Occurance : "}>
+                        </ImageListItemBar>
                     </ImageListItem>
+                    
                 ))}
               </ImageList>
             </div>
