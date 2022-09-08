@@ -32,10 +32,9 @@ const darkTheme = createTheme({
           super(props);
           this.state = {
             itemData: [],
-            whitelist: [],
             path: "",
-            name: "",
-            designation:"",
+            status: "",
+            object:"",
             time_taken:""
           };
           this.canvas = React.createRef();
@@ -50,15 +49,13 @@ const darkTheme = createTheme({
           console.log(e.data)
           let json = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+json.ID+"?"+Math.random().toExponential()});
-          this.setState({ name: json.name});
-          this.setState({ designation: json.designation});
+          this.setState({ status: json.status});
+          this.setState({ object: json.object});
           this.setState({ time_taken: json.time_taken});
-          if (!this.state.whitelist.includes(this.state.name)){
-            this.state.whitelist.push(this.state.name)
-            if (!this.state.itemData.includes(this.state.path)) {
+          if (!this.state.itemData.includes(this.state.path)) {
               this.state.itemData.push(this.state.path)
           }
-          }
+
 
           
 
@@ -67,8 +64,8 @@ const darkTheme = createTheme({
             <div>
             <div>
             <img id="image" src= {this.state.path} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
-            <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Status : {this.state.status}</Typography>
+            <Typography variant="h8" color="inherit" component="div">Object: {this.state.object} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             </div>
             <div>
