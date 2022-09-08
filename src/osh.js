@@ -53,6 +53,7 @@ const darkTheme = createTheme({
           this.setState({ path: "http://localhost:9000/"+json.ID});
           this.setState({ status: json.status});
           this.setState({ hat: json.hat});
+          this.setState({boot:json.boot});
           this.setState({address:this.state.path+"?"+Math.random().toExponential()})
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
