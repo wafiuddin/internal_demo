@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 const darkTheme = createTheme({
     palette: {
@@ -24,70 +26,65 @@ const darkTheme = createTheme({
     color: theme.palette.text.secondary,
   }));
 
-  class Time extends Component{
+  class Incompliance extends Component{
+
         constructor(props) {
           super(props);
           this.state = {
-            date: new Date()
+            itemData: [],
+            whitelist: [],
+            path: "",
+            name: "",
+            designation:"",
+            time_taken:""
           };
-        }
-      
-        componentDidMount() {
-          this.timerID = setInterval(
-            () => this.tick(),
-            6000
-          );
-        }
-      
-        componentWillUnmount() {
-          clearInterval(this.timerID);
-        }
-      
-        tick() {
-          this.setState({
-            date: new Date()
-          });
-        }
-      
-        render() {
-          return (
-            this.state.date.toLocaleTimeString()
-          );
-        }
-  }
-  class Incompliance extends Component{
+          this.canvas = React.createRef();
+      }
 
-      constructor(props) {
-          super(props);
-          this.state = {
-            path: "http://localhost:9000/pic.jpg"
-          };
-        }
-      
-        componentDidMount() {
-          this.timerID = setInterval(
-            () => this.tick(),
-            1000
-          );
-        }
-      
-        componentWillUnmount() {
-          clearInterval(this.timerID);
-        }
-      
-        tick() {
-          this.setState({
-            path: "http://localhost:9000/pic.jpg?"+Math.random().toExponential()
-          });
-        }
+          
       
         render() {
+          let url = "ws://" + window.location.hostname + ":8686";
+        const socket = new WebSocket(url);
+         socket.addEventListener('message', (e) => {
+          console.log(e.data)
+          let json = JSON.parse(e.data)
+          this.setState({ path: "http://localhost:9000/"+json.ID+"?"+Math.random().toExponential()});
+          this.setState({ name: json.name});
+          this.setState({ designation: json.designation});
+          this.setState({ time_taken: json.time_taken});
+          if (!this.state.whitelist.includes(this.state.name)){
+            this.state.whitelist.push(this.state.name)
+            if (!this.state.itemData.includes(this.state.path)) {
+              this.state.itemData.push(this.state.path)
+          }
+          }
+
+          
+
+         });
           return (
             <div>
-            <img src={this.state.path} width="400" height="600" style={{objectFit:"contain"}} alt="Non-compliance" content='no-cache'/>
-            <Typography variant="h8" color="inherit" component="div">Location : Aerodyne Campus</Typography>
-            <Typography variant="h8" color="inherit" component="div">Date: 26 August 2022</Typography>
-            <Typography variant="h8" color="inherit" component="div">Time: <Time></Time></Typography>
+            <div>
+            <img id="image" src= {this.state.path} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
+            <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
+            <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
+            </div>
+            <div>
+              <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={100}>
+                {this.state.itemData.map((item) => (
+                    <ImageListItem key={item}>
+                      <img
+                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item}
+                        loading="lazy"
+                      />
+                    </ImageListItem>
+                ))}
+              </ImageList>
+            </div>
             </div>
           );
         }
@@ -101,7 +98,7 @@ class Osh extends Component {
         this.canvas = React.createRef();
      }
 
-    returnHome = ()=>{
+     returnHome = ()=>{
       window.location='/'
     }
 
@@ -136,12 +133,12 @@ class Osh extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="960" height="820" style={{objectFit:"contain"}}/>
+                    <canvas ref={this.canvas} width="960" height="720" style={{objectFit:"contain"}}/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
-                    <Typography variant="h6" color="inherit" component="div">Non-compliance</Typography>
+                    <Typography variant="h6" color="inherit" component="div">Information</Typography>
                     <Incompliance ></Incompliance>
                     </Item>
                 </Grid>

@@ -133,7 +133,7 @@ class Face extends Component {
                 <Grid item xs={9}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Livestream</Typography>
-                    <canvas ref={this.canvas} width="960" height="820" style={{objectFit:"contain"}}/>
+                    <canvas ref={this.canvas} width="960" height="720" style={{objectFit:"contain"}}/>
                     </Item>
                 </Grid>
                 <Grid item xs={3}>
