@@ -50,7 +50,7 @@ const darkTheme = createTheme({
          socket.addEventListener('message', (e) => {
           console.log(e.data)
           let json = JSON.parse(e.data)
-          this.setState({ path: "http://localhost:9000/"+json.ID+"?"+Math.random().toExponential()});
+          this.setState({ path: "http://localhost:9000/"+json.ID});
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
           this.setState({ time_taken: json.time_taken});
@@ -67,7 +67,7 @@ const darkTheme = createTheme({
           return (
             <div>
             <div>
-            <img id="image" src= {this.state.path} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
+            <img id="image" src= {this.state.path +"?"+Math.random().toExponential()} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
