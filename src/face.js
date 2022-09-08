@@ -52,10 +52,11 @@ const darkTheme = createTheme({
           console.log(e.data)
           let json = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+json.ID});
+          this.setState({address:this.state.path+"?"+Math.random().toExponential()})
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
           this.setState({ time_taken: json.time_taken});
-          this.setState({address:this.state.path+"?"+Math.random().toExponential()})
+          
           if (!this.state.whitelist.includes(this.state.name)){
             this.state.whitelist.push(this.state.name)
             if (!this.state.itemData.includes(this.state.path)) {
