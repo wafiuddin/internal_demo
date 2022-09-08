@@ -103,7 +103,7 @@ const darkTheme = createTheme({
                         loading="lazy"
                       />
                       <ImageListItemBar
-                        title={"Occurance : " +this.state.occurance}>
+                        subtitle={"Occurance : " +this.state.occurance}>
                         </ImageListItemBar>
                     </ImageListItem>
                     
