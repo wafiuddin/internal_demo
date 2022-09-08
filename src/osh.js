@@ -34,7 +34,8 @@ const darkTheme = createTheme({
             itemData: [],
             path: "",
             status: "",
-            object:"",
+            hat:"",
+            boot:"",
             time_taken:""
           };
           this.canvas = React.createRef();
@@ -50,7 +51,8 @@ const darkTheme = createTheme({
           let json = JSON.parse(e.data)
           this.setState({ path: "http://localhost:9000/"+json.ID+"?"+Math.random().toExponential()});
           this.setState({ status: json.status});
-          this.setState({ object: json.object});
+          this.setState({ hat: json.hat});
+          this.setState({ boot: json.boot});
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
               this.state.itemData.push(this.state.path)
@@ -65,7 +67,8 @@ const darkTheme = createTheme({
             <div>
             <img id="image" src= {this.state.path} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Status : {this.state.status}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Object: {this.state.object} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Hat: {this.state.hat} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Boot: {this.state.boot} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             </div>
             <div>
