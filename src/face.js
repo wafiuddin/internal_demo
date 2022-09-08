@@ -26,7 +26,7 @@ const darkTheme = createTheme({
     color: theme.palette.text.secondary,
   }));
 
-  class Incompliance extends Component{
+  class Information extends Component{
 
         constructor(props) {
           super(props);
@@ -140,7 +140,7 @@ class Face extends Component {
                 <Grid item xs={3}>
                     <Item>
                     <Typography variant="h6" color="inherit" component="div">Information</Typography>
-                    <Incompliance ></Incompliance>
+                    <Information ></Information>
                     </Item>
                 </Grid>
             </Grid>

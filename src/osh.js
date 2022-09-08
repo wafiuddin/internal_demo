@@ -135,7 +135,7 @@ class Osh extends Component {
                 </Grid>
                 <Grid item xs={3}>
                     <Item>
-                    <Typography variant="h6" color="inherit" component="div">Information</Typography>
+                    <Typography variant="h6" color="inherit" component="div">Incompliance</Typography>
                     <Incompliance ></Incompliance>
                     </Item>
                 </Grid>
