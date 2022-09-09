@@ -56,6 +56,7 @@ const darkTheme = createTheme({
           this.setState({ name: json.name});
           this.setState({ designation: json.designation});
           this.setState({ time_taken: json.time_taken});
+          this.setState({location:json.location});
           
           if (!this.state.whitelist.includes(this.state.name)){
             this.state.whitelist.push(this.state.name)
@@ -74,7 +75,7 @@ const darkTheme = createTheme({
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
             <Typography variant="h8" color="inherit" component="div">Position: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Location: Cyberjaya</Typography>
+            <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
             </div>
             <div>
               <ImageList cols={3} gap={8}>
