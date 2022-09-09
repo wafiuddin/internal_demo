@@ -32,7 +32,7 @@ const darkTheme = createTheme({
           super(props);
           this.state = {
             itemData: [],
-            path: "http://localhost:9000/pic.jpg",
+            path: "",
             status: "",
             hat:"",
             boot:"",
@@ -74,7 +74,7 @@ const darkTheme = createTheme({
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             </div>
             <div>
-              <ImageList variant="masonry" cols={3} gap={8}>
+              <ImageList  cols={3} gap={8}>
                 {this.state.itemData.map((item) => (
                     <ImageListItem key={item}>
                       <img

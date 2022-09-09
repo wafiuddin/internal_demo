@@ -34,7 +34,7 @@ const darkTheme = createTheme({
             itemData: [],
             //make sure people dont repeat in list
             whitelist: [],
-            path: "http://localhost:9000/pic.jpg",
+            path: "",
             name: "",
             designation:"",
             time_taken:"",
@@ -77,7 +77,7 @@ const darkTheme = createTheme({
             <Typography variant="h8" color="inherit" component="div">Location: Cyberjaya</Typography>
             </div>
             <div>
-              <ImageList sx={{ width: 400, height: 300 }} cols={3} rowHeight={100}>
+              <ImageList cols={3} gap={8}>
                 {this.state.itemData.map((item) => (
                     <ImageListItem key={item}>
                       <img
@@ -87,7 +87,7 @@ const darkTheme = createTheme({
                         loading="lazy"
                       />
                     </ImageListItem>
-                ))}
+                )).reverse()}
               </ImageList>
             </div>
             </div>
