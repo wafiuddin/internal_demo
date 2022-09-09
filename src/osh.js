@@ -37,7 +37,8 @@ const darkTheme = createTheme({
             hat:"",
             boot:"",
             time_taken:"",
-            address:""
+            address:"",
+            loaction:""
           };
           this.canvas = React.createRef();
       }
@@ -55,6 +56,7 @@ const darkTheme = createTheme({
           this.setState({ status: json.status});
           this.setState({ hat: json.hat});
           this.setState({boot:json.boot});
+          this.setState({location:json.location})
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
               this.state.itemData.push(this.state.path)
@@ -72,6 +74,7 @@ const darkTheme = createTheme({
             <Typography variant="h8" color="inherit" component="div">Hat: {this.state.hat} </Typography>
             <Typography variant="h8" color="inherit" component="div">Boot: {this.state.boot} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
+            <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
             </div>
             <div>
               <ImageList  cols={3} gap={8}>

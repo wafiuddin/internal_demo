@@ -38,7 +38,8 @@ const darkTheme = createTheme({
             name: "",
             designation:"",
             time_taken:"",
-            address:""
+            address:"",
+            loacation:""
           };
           this.canvas = React.createRef();
       }
