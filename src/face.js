@@ -34,7 +34,7 @@ const darkTheme = createTheme({
             itemData: [],
             //make sure people dont repeat in list
             whitelist: [],
-            path: "",
+            path: "http://localhost:9000/pic.jpg",
             name: "",
             designation:"",
             time_taken:"",
@@ -72,7 +72,7 @@ const darkTheme = createTheme({
             <div>
             <img id="image" src= {this.state.address} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Positon: {this.state.designation} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Position: {this.state.designation} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             <Typography variant="h8" color="inherit" component="div">Location: Cyberjaya</Typography>
             </div>
