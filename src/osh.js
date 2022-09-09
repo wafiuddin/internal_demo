@@ -34,8 +34,7 @@ const darkTheme = createTheme({
             itemData: [],
             path: "",
             status: "",
-            hat:"",
-            boot:"",
+            missing:"",
             time_taken:"",
             address:"",
             loaction:""
@@ -54,8 +53,7 @@ const darkTheme = createTheme({
           this.setState({ path: "http://localhost:9000/"+json.ID});
           this.setState({address:this.state.path+"?"+Math.random().toExponential()})
           this.setState({ status: json.status});
-          this.setState({ hat: json.hat});
-          this.setState({boot:json.boot});
+          this.setState({ missing: json.missing});
           this.setState({location:json.location})
           this.setState({ time_taken: json.time_taken});
           if (!this.state.itemData.includes(this.state.path)) {
@@ -71,8 +69,7 @@ const darkTheme = createTheme({
             <div>
             <img id="image" src= {this.state.address} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Status : {this.state.status}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Hat: {this.state.hat} </Typography>
-            <Typography variant="h8" color="inherit" component="div">Boot: {this.state.boot} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Missing object: {this.state.missing} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
             </div>
