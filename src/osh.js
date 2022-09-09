@@ -69,7 +69,7 @@ const darkTheme = createTheme({
             <div>
             <img id="image" src= {this.state.address} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
             <Typography variant="h8" color="inherit" component="div">Status : {this.state.status}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Missing object: {this.state.missing} </Typography>
+            <Typography variant="h8" color="inherit" component="div">Missing PPE: {this.state.missing} </Typography>
             <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
             <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
             </div>
