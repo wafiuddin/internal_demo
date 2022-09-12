@@ -11,6 +11,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 const darkTheme = createTheme({
     palette: {
@@ -71,28 +74,39 @@ const darkTheme = createTheme({
          });
           return (
             <div>
-            <div>
-            <img id="image" src= {this.state.address} width="400" height="450" style={{objectFit:"contain"}} content='no-cache'/>
-            <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Position: {this.state.designation} </Typography>
-            <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
-            <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
-            </div>
-            <div>
-              <ImageList cols={3} gap={8}>
-                {this.state.itemData.map((item) => (
-                    <ImageListItem key={item}>
-                      <img
-                        src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                        alt={item}
-                        loading="lazy"
-                      />
-                    </ImageListItem>
-                )).reverse()}
-              </ImageList>
-            </div>
-            </div>
+            <Card>
+            <CardMedia
+              component="img"
+              height="450"
+              width="400"
+              image={this.state.address}
+              style={{objectFit:"contain"}}
+            />
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+              <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
+              <Typography variant="h8" color="inherit" component="div">Position: {this.state.designation} </Typography>
+              <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
+              <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
+              </Typography>
+            </CardContent>
+          </Card>
+          <br></br>
+             <div>
+               <ImageList cols={3} gap={8}>
+                 {this.state.itemData.map((item) => (
+                     <ImageListItem key={item}>
+                       <img
+                         src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                         srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                         alt={item}
+                         loading="lazy"
+                       />
+                     </ImageListItem>
+                 )).reverse()}
+               </ImageList>
+             </div>
+             </div>
           );
         }
     
