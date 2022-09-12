@@ -87,6 +87,7 @@ const darkTheme = createTheme({
               </Typography>
             </CardContent>
           </Card>
+          <br></br>
             <div>
               <ImageList  cols={3} gap={8}>
                 {this.state.itemData.map((item) => (
