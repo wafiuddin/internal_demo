@@ -46,23 +46,6 @@ const darkTheme = createTheme({
           };
           this.canvas = React.createRef();
       }
-
-      componentDidMount() {
-        this.timerID = setInterval(
-          () => this.tick(),
-          10000
-        );
-      }
-         
-      componentWillUnmount() {
-        clearInterval(this.timerID);
-      }
-    
-      tick() {
-        this.setState({
-          whitelist: []
-        });
-      }
         render() {
           let url = "ws://" + window.location.hostname + ":8686";
         const socket = new WebSocket(url);
