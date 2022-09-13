@@ -84,8 +84,8 @@ const darkTheme = createTheme({
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-              <Typography variant="h8" color="inherit" component="div">Name : {this.state.name}</Typography>
-              <Typography variant="h8" color="inherit" component="div">Position: {this.state.designation} </Typography>
+              <Typography variant="h8" color="inherit" component="div">Name: {this.state.name}</Typography>
+              <Typography variant="h8" color="inherit" component="div">Designation: {this.state.designation} </Typography>
               <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
               <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
               </Typography>

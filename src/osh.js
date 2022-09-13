@@ -77,7 +77,7 @@ const darkTheme = createTheme({
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-              <Typography variant="h8" color="inherit" component="div">Status : {this.state.status}</Typography>
+              <Typography variant="h8" color="inherit" component="div">Status: {this.state.status}</Typography>
               <Typography variant="h8" color="inherit" component="div">Time: {this.state.time_taken}</Typography>
               <Typography variant="h8" color="inherit" component="div">Location: {this.state.location}</Typography>
               </Typography>
