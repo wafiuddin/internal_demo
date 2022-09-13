@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import IconButton from '@mui/material/IconButton';
+import Particle from "react-particles-js";
+import particlesConfig from "./asset/particlesConfig.json";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
@@ -19,6 +20,7 @@ function face (){
 
 function App() {
   return (
+    <><Particle params={particlesConfig} className="App-particles__container" />
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -33,6 +35,7 @@ function App() {
     </ButtonGroup>
       </header>
     </div>
+    </>
   );
 }
 
