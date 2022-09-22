@@ -9,11 +9,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 function osh (){
   window.location="/osh"
   }
-
-function objectDemo (){
-    window.location="/objectdetection"
-    }
-
+  
 function face (){
   window.location="/face"
 }
